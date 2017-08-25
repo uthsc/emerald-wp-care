@@ -93,4 +93,12 @@ function my_acf_google_map_api( $api ){
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 // =(end)= jquery google maps on 'office' custom post type =======
 
+// ======= remove yoast meta box on edit page for 'offices' custom post types =======
+function remove_yoast_metabox_reservations(){
+    remove_meta_box('wpseo_meta', 'offices', 'normal');
+}
+add_action( 'add_meta_boxes', 'remove_yoast_metabox_reservations',11 );
+// =(end)= remove yoast meta box on edit page for 'offices' custom post types  =======
+
+
 ?>
