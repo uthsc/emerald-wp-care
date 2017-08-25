@@ -41,40 +41,79 @@ if ( get_field('uthsc_show_post_hero_image', $post_id) ) {
                             <div class="columns medium-6 large-8">
                                 <figure class="uthsc-figure thumbnail care-streetview-iframe">
                                     <?php echo uthsc_get_acf('care_iframe', get_the_ID(), '', ''); ?>
+                            <!--============================================-->
+                            <?php
+                            $care_image = uthsc_get_acf('care_image_url', get_the_ID(), '', '');
+                            if (!empty($care_image)): ?>
+                                <figure class="uthsc-figure thumbnail">
+                                    <img src="<?php echo uthsc_get_acf('care_image_url', get_the_ID(), '', ''); ?>"
+                                         alt="<?php echo uthsc_get_acf('care_image_alt', get_the_ID(), '', ''); ?>"
+                                         width="100%"
+                                         height="">
                                     <figcaption><?php echo uthsc_get_acf('care_image_caption', get_the_ID(), '', ''); ?></figcaption>
                                 </figure>
-                                <?php echo uthsc_get_acf('care_description', get_the_ID(), '', ''); ?>
-<!--                                --><?php //the_content(); ?>
-                            </div>
-                            <div class="columns medium-6 large-4 callout">
-                                <?php
+                            <?php endif; ?>
 
-                                $location = get_field('care_map');
+                            <!--============================================-->
+                            <?php
 
-                                if( !empty($location) ):
-                                    ?>
-                                    <div class="acf-map">
-                                        <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></div>
-                                    </div>
-                                <?php endif; ?>
+                            $image = get_field('care_upload_image');
+                            if (!empty($image)): ?>
 
+                                <figure class="uthsc-figure thumbnail">
+                                    <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"/>
+                                    <figcaption><?php echo uthsc_get_acf('care_image_caption', get_the_ID(), '', ''); ?></figcaption>
+                                </figure>
+                            <?php endif; ?>
 
-                                        <dl class="care-office-list">
-                                            <dt><span class="fa fa-link fa-fw"></span> <a href="<?php echo uthsc_get_acf('care_webpage_link', get_the_ID(), '', ''); ?>"><?php echo uthsc_get_acf('care_webpage_link_text', get_the_ID(), '', ''); ?></a></dt>
-                                            <dt><span class="fa fa-phone fa-fw"></span> <?php echo uthsc_get_acf('care_phone', get_the_ID(), '', ''); ?></dt>
-                                            <dt><span class="fa fa-envelope fa-fw"></span> <a href="mailto:<?php echo uthsc_get_acf('care_email', get_the_ID(), '', ''); ?>"><?php echo uthsc_get_acf('care_email', get_the_ID(), '', ''); ?></a></dt>
+                            <!--============================================-->
+                            <?php
+                            $care_iframe = uthsc_get_acf('care_iframe', get_the_ID(), '', '');
+                            if (!empty($care_iframe)): ?>
+                                <figure class="uthsc-figure thumbnail care-streetview-iframe">
+                                    <?php echo uthsc_get_acf('care_iframe', get_the_ID(), '', ''); ?>
+                                    <figcaption><?php echo uthsc_get_acf('care_image_caption', get_the_ID(), '', ''); ?></figcaption>
+                                </figure>
+                            <?php endif; ?>
+                            <!--============================================-->
 
-
-                                            <dt><span class="fa fa-clock-o fa-fw"></span> <?php echo uthsc_get_acf('care_hours', get_the_ID(), '', ''); ?></dt>
-                                            <dt><span class="fa fa-map-marker fa-fw" style="height: 2.5rem;float: left;margin-top: 0.2rem;"></span> <?php echo uthsc_get_acf('care_address', get_the_ID(), '', ''); ?></dt>
-                                        </dl>
-
-
-                                        <a class="button large fa fa-comment expanded"> Contact this office</a>
-
-
-                                </div></div>
+                            <?php echo uthsc_get_acf('care_description', get_the_ID(), '', ''); ?>
+                            <!--                                --><?php //the_content(); ?>
                         </div>
+                        <div class="columns medium-6 large-4 callout">
+                            <?php
+
+                            $location = get_field('care_map');
+
+                            if (!empty($location)):
+                                ?>
+                                <div class="acf-map">
+                                    <div class="marker" data-lat="<?php echo $location['lat']; ?>"
+                                         data-lng="<?php echo $location['lng']; ?>"></div>
+                                </div>
+                            <?php endif; ?>
+
+
+                            <dl class="care-office-list">
+                                <dt><span class="fa fa-link fa-fw"></span> <a
+                                            href="<?php echo uthsc_get_acf('care_webpage_link', get_the_ID(), '', ''); ?>"><?php echo uthsc_get_acf('care_webpage_link_text', get_the_ID(), '', ''); ?></a>
+                                </dt>
+                                <dt>
+                                    <span class="fa fa-phone fa-fw"></span> <?php echo uthsc_get_acf('care_phone', get_the_ID(), '', ''); ?>
+                                </dt>
+                                <dt><span class="fa fa-envelope fa-fw"></span> <a
+                                            href="mailto:<?php echo uthsc_get_acf('care_email', get_the_ID(), '', ''); ?>"><?php echo uthsc_get_acf('care_email', get_the_ID(), '', ''); ?></a>
+                                </dt>
+
+
+                                <dt>
+                                    <span class="fa fa-clock-o fa-fw"></span> <?php echo uthsc_get_acf('care_hours', get_the_ID(), '', ''); ?>
+                                </dt>
+                                <dt><span class="fa fa-map-marker fa-fw"
+                                          style="height: 2.5rem;float: left;margin-top: 0.2rem;"></span> <?php echo uthsc_get_acf('care_address', get_the_ID(), '', ''); ?>
+                                </dt>
+                            </dl>
+
                         <!--                        --><?php //echo do_shortcode('[offices]'); ?>
 
 
