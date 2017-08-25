@@ -81,6 +81,7 @@ function offices_shortcode_function($atts)
 add_shortcode('offices', 'offices_shortcode_function');
 // =(end)= offices shortcode function =======
 
+// ======= jquery google maps on 'office' custom post type =======
 function my_acf_google_map_api( $api ){
 
     $api['key'] = 'AIzaSyDrTxR-KtWbAX4BmI6ph7mrjHRmURS0Yu8';
@@ -90,5 +91,6 @@ function my_acf_google_map_api( $api ){
 }
 
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+// =(end)= jquery google maps on 'office' custom post type =======
 
 ?>
